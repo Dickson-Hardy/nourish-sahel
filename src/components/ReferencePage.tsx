@@ -21,18 +21,66 @@ export function ReferencePage({ page }: { page: PageData }) {
       effect.onerror = () => document.body.appendChild(script);
       document.body.appendChild(effect);
     } else document.body.appendChild(script);
-    const onSubmit = (event: SubmitEvent) => {
-      const form = event.target as HTMLFormElement;
-      if (!form.matches('[data-demo-form]')) return;
+    const topic = new URLSearchParams(location.search).get('topic');
+    const topicField = document.querySelector<HTMLSelectElement>('.contact-demo [name="topic"]');
+    if (topic && topicField && [...topicField.options].some(option => option.value === topic)) {
+      topicField.value = topic;
+    }
+
+    const onSubmit = async (event: SubmitEvent) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement) || !form.matches('[data-nourish-form]')) return;
       event.preventDefault();
-      if (!form.reportValidity()) return;
-      let result = form.querySelector<HTMLParagraphElement>('[data-form-result]');
-      if (!result) { result = document.createElement('p'); result.dataset.formResult = ''; result.setAttribute('role', 'status'); form.appendChild(result); }
-      result.textContent = 'Your details passed validation. Demonstration mode: no information was sent.';
+      if (!form.reportValidity() || form.getAttribute('aria-busy') === 'true') return;
+
+      const result = form.querySelector<HTMLElement>('[data-form-result]');
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const body = new URLSearchParams();
+      new FormData(form).forEach((value, key) => {
+        if (typeof value === 'string') body.append(key, value);
+      });
+      form.setAttribute('aria-busy', 'true');
+      if (button) button.disabled = true;
+      if (result) {
+        result.dataset.state = 'pending';
+        result.textContent = 'Submitting…';
+      }
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body,
+        });
+        const { message } = await response.json() as { message: string };
+        if (result) {
+          result.dataset.state = response.ok ? 'success' : 'error';
+          result.textContent = message;
+        }
+        if (response.ok) form.reset();
+      } catch {
+        if (result) {
+          result.dataset.state = 'error';
+          result.textContent = 'We couldn’t connect. Please try again.';
+        }
+      } finally {
+        form.removeAttribute('aria-busy');
+        if (button) button.disabled = false;
+      }
     };
     document.addEventListener('submit', onSubmit, true);
+    const dismissNavigation = (event: PointerEvent) => {
+      if (!(event.target instanceof Element) || event.target.closest('.nourish-nav-disclosure')) return;
+      document.querySelector<HTMLDetailsElement>('.nourish-nav-disclosure[open]')?.removeAttribute('open');
+    };
+    document.addEventListener('pointerdown', dismissNavigation);
     const keyboard = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        const disclosure = document.querySelector<HTMLDetailsElement>('.nourish-nav-disclosure[open]');
+        if (disclosure) {
+          disclosure.open = false;
+          disclosure.querySelector('summary')?.focus();
+          return;
+        }
         document.body.classList.remove('menuIsOpen', 'submenu-active');
         window.lenis?.start();
         document.querySelectorAll('[data-toggle-menu]').forEach(e => e.setAttribute('aria-expanded', 'false'));
@@ -61,7 +109,7 @@ export function ReferencePage({ page }: { page: PageData }) {
         if (!video.parentElement?.querySelector('[role="status"]')) video.after(message);
       });
     });
-    return () => { document.removeEventListener('submit', onSubmit, true); document.removeEventListener('keydown', keyboard); observer.disconnect(); };
+    return () => { document.removeEventListener('submit', onSubmit, true); document.removeEventListener('keydown', keyboard); document.removeEventListener('pointerdown', dismissNavigation); observer.disconnect(); };
   }, []);
   return <>
     <a className="skip-link screen-reader-text" href="#content">Skip to content</a>

@@ -160,3 +160,59 @@ html,body{overflow-x:clip}
 @media (max-width:767px) {
   .fittrac-panel,.nourish-plate-grid,.nourish-article-layout {grid-template-columns:1fr}
 }
+
+.nourish-nav-disclosure {position:relative}
+.nourish-nav-disclosure summary {
+  display:flex;align-items:center;gap:.55rem;min-height:44px;padding:.5rem .75rem;
+  cursor:pointer;list-style:none;font-weight:500;border-radius:.6rem;
+}
+.nourish-nav-disclosure summary::-webkit-details-marker {display:none}
+.nourish-nav-disclosure summary:hover,.nourish-nav-disclosure[open] summary {background:#edf1e6}
+.nourish-nav-disclosure[open] summary svg {transform:rotate(180deg)}
+.nourish-nav-panel {
+  position:absolute;top:calc(100% + .6rem);left:0;z-index:10;
+  width:clamp(250px,25vw,320px);padding:.55rem;
+  border:1px solid #d4dccc;border-radius:.9rem;background:#fff;box-shadow:0 14px 32px #182a1922;
+}
+.nourish-nav-panel a {
+  display:flex;align-items:center;justify-content:space-between;min-height:44px;
+  padding:.45rem .75rem;border-radius:.5rem;color:#154212;text-decoration:none;
+}
+.nourish-nav-panel a:hover,.nourish-nav-panel a:focus-visible {background:#edf1e6}
+.nourish-nav-panel .nourish-nav-overview {background:#edf1e6;font-weight:700;margin-bottom:.35rem}
+
+.nourish-zobo-panel {
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;
+  gap:clamp(2rem,5vw,5rem);padding:clamp(1.5rem,5vw,4.5rem);
+  background:#f7e7e3;color:#512439;border-radius:1.25rem;
+}
+.nourish-zobo-copy {display:grid;gap:1rem}
+.nourish-zobo-copy h2 {font-size:clamp(2.15rem,4.6vw,4.75rem);line-height:1.02;text-wrap:balance;color:inherit}
+.nourish-zobo-copy p {max-width:56ch}
+.nourish-zobo-research {border-top:1px solid #b98490;padding-top:1rem;display:grid;gap:.55rem}
+.nourish-zobo-research h3 {font-size:1.1rem;font-weight:700}
+.nourish-zobo-research a {width:fit-content;color:inherit;text-decoration:underline;text-underline-offset:.2em}
+.nourish-zobo-figure {width:min(100%,430px);margin:auto;text-align:center}
+.nourish-zobo-art {display:grid;place-items:center;aspect-ratio:1;position:relative}
+.nourish-zobo-art img {width:78%;height:90%;object-fit:contain;transform-origin:50% 65%}
+@media (max-width:767px) {
+  .nourish-zobo-panel {grid-template-columns:1fr}
+  .nourish-zobo-figure {width:min(100%,340px)}
+}
+@keyframes nourish-zobo-turn {from {transform:rotate(-12deg)} to {transform:rotate(12deg)}}
+@supports (animation-timeline:view()) {
+  @media (prefers-reduced-motion:no-preference) {
+    .nourish-zobo-art img {
+      animation:nourish-zobo-turn linear both;
+      animation-timeline:view();
+      animation-range:entry 5% exit 95%;
+    }
+  }
+}
+
+.nourish-newsletter-row {display:flex;flex-wrap:wrap;gap:.6rem}
+.nourish-newsletter input[type=email] {flex:1;min-width:min(100%,13rem);padding:.7rem .85rem;border:1px solid var(--border-color);border-radius:.5rem;background:#fff}
+.nourish-form-note,.nourish-form-result {font-size:.875rem;line-height:1.45;margin-top:.65rem}
+.nourish-form-result:empty {margin:0}
+.nourish-form-result[data-state=error] {color:#8a2738}
+[data-nourish-form] button:disabled {opacity:.7;cursor:wait}
