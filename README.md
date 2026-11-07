@@ -28,3 +28,5 @@ Set the variables from `.env.example` in the server environment. For a local pro
 The site uses the Hostinger Mail API. Set `NOURISH_HOSTINGER_API_TOKEN` and the `NOURISH_HOSTINGER_MAILBOX_ID` for the authorised sending mailbox in the server environment. The recipient defaults to `info@nourishsahel.com`. The visitor’s address is included in the message body.
 
 The newsletter form emails each signup request to the inbox for follow-up. Keep the subscriber list separately. Forms report that they are unavailable when their mail settings are incomplete.
+
+The forms require Node.js 22.16 or later and a persistent, writable local filesystem. All Node workers on the host must use the same SQLite file at `NOURISH_FORM_LIMIT_DB` (defaults to `.data/form-limits.sqlite`). It allows up to twelve sends per socket peer per rolling ten minutes, plus 30 site-wide per rolling hour. Forwarded client IP headers are ignored. If the Node adapter exposes only the proxy peer, proxied visitors share that peer budget. Deployments on multiple hosts need a shared ingress send budget or a central limiter to enforce one limit across hosts.

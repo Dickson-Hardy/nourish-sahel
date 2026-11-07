@@ -113,7 +113,7 @@ html,body{overflow-x:clip}
   object-position: center 30%;
 }
 @media (768px <= width < 1024px) {
-  .nourish-site .home-banner-slider .reveal {
+  .nourish-site .home-banner-slider .nourish-hero-media {
     height: clamp(360px, 51vw, 500px);
   }
 }

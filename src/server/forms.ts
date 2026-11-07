@@ -1,3 +1,5 @@
+import { getRequestIP } from '@tanstack/react-start/server';
+import { reserveFormSend } from './form-limits';
 import { siteOrigin } from './site-origin';
 
 const emailPattern = /^[^\s@,<>]+@[^\s@,<>]+\.[^\s@,<>]+$/;
@@ -32,9 +34,12 @@ async function readForm(request: Request) {
 
 export async function submitForm(request: Request) {
   const acceptsJson = request.headers.get('accept')?.includes('application/json');
-  const reply = (status: number, message: string) => acceptsJson
-    ? Response.json({ message }, { status })
-    : new Response(message, { status, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  const reply = (status: number, message: string, headers = new Headers()) => {
+    headers.set('Cache-Control', 'no-store');
+    if (acceptsJson) return Response.json({ message }, { status, headers });
+    headers.set('Content-Type', 'text/plain; charset=utf-8');
+    return new Response(message, { status, headers });
+  };
 
   const origin = siteOrigin() ?? new URL(request.url).origin;
   if (request.headers.get('origin') !== origin) return reply(403, 'Please submit from the Nourish Sahel website.');
@@ -69,6 +74,18 @@ export async function submitForm(request: Request) {
   const to = process.env.NOURISH_FORM_TO?.trim() || 'info@nourishsahel.com';
   if (!token || !mailbox || !emailPattern.test(to)) {
     return reply(503, 'This form is temporarily unavailable. Please try again later.');
+  }
+
+  let retryAfter: number;
+  try {
+    retryAfter = reserveFormSend(getRequestIP());
+  } catch {
+    console.error('Nourish Sahel form rate limit unavailable');
+    return reply(503, 'This form is temporarily unavailable. Please try again later.');
+  }
+  if (retryAfter) {
+    return reply(429, 'Too many submissions. Please wait before trying again.',
+      new Headers({ 'Retry-After': String(retryAfter) }));
   }
 
   try {
