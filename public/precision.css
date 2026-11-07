@@ -1,0 +1,162 @@
+:root{--primary-background:#fff;--secondary-background:#f8f8f8;--primary-text:#004c45;--muted-text:#004c45;--accent-orange:#f9a057;--accent-green:#c0df88;--button-background:#004c45;--footer-background:#fff;--border-color:#bfd1cd}
+@font-face{font-family:brand-font;font-style:normal;font-weight:400;src:url('/assets/89ab80106523d58c.woff2') format('woff2');font-display:swap}
+.source-content,.source-header,.source-footer{display:contents}
+.screen-reader-text{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;border:0}
+.skip-link:focus{position:fixed;left:12px;top:12px;z-index:10001;width:auto;height:auto;margin:0;padding:12px;background:#fff;clip:auto;clip-path:none}
+html,body{overflow-x:clip}
+.share-snapshot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:24px;color:#004c45}
+.share-snapshot small{display:block;font-size:10px;opacity:.75}
+.share-snapshot strong{background:#004c45;color:#fff;padding:16px 24px;font-size:14px}
+.demo-note{font-size:12px!important;line-height:1.5!important;opacity:.75;margin-top:12px!important}
+[data-form-result]{padding:12px 0;font-size:14px;line-height:1.5}
+.contact-demo{display:grid;gap:12px;max-width:600px;margin:24px 0}
+.contact-demo input,.contact-demo textarea{border:1px solid var(--border-color);padding:12px;border-radius:4px;width:100%;font:inherit}
+.contact-demo button{justify-self:start}
+:focus-visible{outline:2px solid var(--primary-text);outline-offset:5px}
+.menu-item:focus-within>.submenu{opacity:1;visibility:visible;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.reveal{visibility:visible!important;opacity:1!important}#swirl-scene{background:#004c45}}
+
+/* Nourish Sahel uses the captured home composition and shared navigation. */
+.nourish-site{--primary-text:#154212;--muted-text:#154212;--button-background:#154212;--border-color:#d4c8b8;--nourish-paper:#f3ede8;color:#154212;background:var(--nourish-paper)}
+.nourish-logo{width:clamp(164px,17vw,248px);max-height:62px;object-fit:contain;object-position:left center}
+.nourish-footer-logo{width:min(220px,100%);max-height:185px;object-fit:contain}
+.nourish-site .home-banner h1{font-size:clamp(3.4rem,10vw,12rem);color:#154212}
+.nourish-site .home-banner h2{font-size:clamp(1.05rem,2.4vw,2.45rem);max-width:24ch;color:#154212}
+.nourish-action{display:inline-block;width:fit-content;padding:.75em 1.25em;border:1px solid #154212;border-radius:100px;background:#154212;color:#fff;text-decoration:none;font-weight:600}
+.nourish-action:hover{background:#296324}
+.nourish-hero-action{position:relative;margin-top:1rem}
+.nourish-commitments{background-color:#154212;background-position:center;background-size:cover;color:#fff}
+.nourish-commitments h2{max-width:25ch}
+.nourish-prose{margin-bottom:1.5rem}
+.nourish-prose p{margin-bottom:1em}
+.nourish-prose details{max-width:64ch;border-bottom:1px solid var(--border-color);padding:.9rem 0}
+.nourish-prose summary{cursor:pointer;font-weight:600}
+.nourish-site .contact-demo select{width:100%;padding:12px;border:1px solid var(--border-color);border-radius:4px}
+
+
+.nourish-logo.logo-animated{position:relative;inset:auto;transition:transform .5s ease;transform-origin:left center}
+
+.nourish-display-line{display:block}
+.nourish-commitments #swirl-scene{opacity:.45;pointer-events:none}
+.nourish-marquee-mark{width:40px;height:36px;object-fit:contain;margin-right:1rem}
+.nourish-card-caption{margin-top:.3em}
+
+.nourish-site header .nourish-logo.logo-animated{width:clamp(164px,17vw,248px);transform:none}
+.nourish-site header .nourish-logo.logo-animated.toggle-animation{transform:scale(.82)}
+
+.nourish-kitchen-heading{font-size:clamp(3.4rem,8vw,8.5rem)}
+
+/* Blend editorial image edges into the page without changing the card crops. */
+.nourish-site .home-banner-slider > .bg-gradient-to-r {
+  display: none;
+}
+.nourish-site .home-banner picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 94%, transparent);
+}
+.nourish-site header button[data-toggle-menu] {
+  min-width: 44px;
+  min-height: 44px;
+  justify-items: center;
+}
+.nourish-site .home-banner picture img {
+  object-position: center 47%;
+}
+.nourish-site main section:first-child div:has(> .banner-image-cover) {
+  mask-image: linear-gradient(to bottom, #000 85%, transparent);
+}
+.nourish-site main section:first-child div:has(> .banner-content),
+.nourish-site .banner-image-cover {
+  background-color: var(--nourish-paper);
+}
+.nourish-site main section:first-child div:has(> .banner-content) > svg {
+  display: none;
+}
+.nourish-site main:has(.blog-content) > section:first-child img {
+  mask-image: linear-gradient(to bottom, #000 88%, transparent);
+}
+.nourish-site .nourish-hero-action:focus-visible {
+  outline-offset: 5px;
+}
+@media (min-width: 768px) {
+  .nourish-site .home-banner picture {
+    mask-image:
+      linear-gradient(to right, transparent, #000 37%),
+      linear-gradient(to bottom, #000 94%, transparent);
+    mask-composite: intersect;
+  }
+}
+@media (min-width: 1024px) {
+  .nourish-site main section:first-child div:has(> .banner-image-cover) {
+    mask-image:
+      linear-gradient(to right, transparent 28%, #000 72%),
+      linear-gradient(to bottom, #000 91%, transparent);
+    mask-composite: intersect;
+  }
+  .nourish-site main section:first-child div:has(> .banner-content) {
+    background-color: transparent;
+  }
+}
+
+/* Content remains available before the motion runtime starts and with motion off. */
+.nourish-site :is(
+  [data-fade], [data-fade-down], [data-fade-left], [data-fade-right], [data-fade-up],
+  [data-animate-stagger-down] > *, [data-animate-stagger-fade] > *,
+  [data-animate-stagger-left] > *, [data-animate-stagger-right] > *,
+  [data-animate-stagger-up] > *
+) {
+  visibility: visible;
+}
+.nourish-site main:has(.blog-content) > section:first-child img {
+  object-position: center 30%;
+}
+@media (768px <= width < 1024px) {
+  .nourish-site .home-banner-slider .reveal {
+    height: clamp(360px, 51vw, 500px);
+  }
+}
+
+/* FitTrac is presented as an editorial preview of the planned experience. */
+.nourish-fittrac {scroll-margin-top: 100px}
+.fittrac-panel {
+  display:grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  align-items:center;
+  gap:clamp(2rem, 5vw, 5rem);
+  padding:clamp(1.5rem, 5vw, 5rem);
+  border-radius:1.25rem;
+  background:linear-gradient(120deg, #e3ead9, #f3ede8);
+}
+.fittrac-copy {display:grid; gap:1.15rem}
+.fittrac-copy h2,.nourish-plate-section h2 {font-size:clamp(2.15rem, 4vw, 4rem);line-height:1.04;text-wrap:balance}
+.fittrac-copy p {max-width:52ch}
+.fittrac-eyebrow {font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.fittrac-preview {display:grid;justify-items:center;gap:.7rem}
+.fittrac-preview figcaption {font-size:.8rem;text-align:center}
+.fittrac-phone {width:min(100%, 310px);padding:1.25rem;border:.45rem solid #154212;border-radius:1.8rem;background:#fff}
+.fittrac-phone-top {display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding-bottom:.6rem;border-bottom:1px solid #ddd6cc}
+.fittrac-phone-top span {font-size:.72rem}
+.fittrac-phone > p {padding-block:.8rem;font-size:1.15rem;font-weight:700}
+.fittrac-phone ul {display:grid;gap:.65rem}
+.fittrac-phone li {display:flex;align-items:center;gap:.6rem;background:#f3ede8;border-radius:.6rem;padding:.4rem;font-size:.9rem}
+.fittrac-phone li img {width:44px;height:44px;flex:none;object-fit:cover;border-radius:.35rem}
+.fittrac-phone small,.nourish-article-related small {display:block;font-size:.7rem;letter-spacing:.06em}
+.fittrac-features {display:grid;gap:.7rem}
+.fittrac-features span {display:block}
+.nourish-plate-section h2 {margin-block:.6rem 1.5rem}
+.nourish-plate-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.nourish-plate-grid li {border-top:1px solid #b9c2ac;padding-block:1rem}
+.nourish-plate-grid p {margin-top:.4rem}
+.nourish-plate-actions {display:flex;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+.nourish-article-layout {display:grid;grid-template-columns:minmax(0, 68ch) minmax(0, 1fr);gap:clamp(2rem,7vw,7rem)}
+.nourish-article-layout .block-content {line-height:1.65}
+.nourish-article-layout h2 {font-size:clamp(1.35rem,2.35vw,2rem);line-height:1.15}
+.nourish-article-lead {font-size:1.18rem;font-weight:600}
+.nourish-article-related {border-top:1px solid #b9c2ac;padding-top:1rem}
+.nourish-article-related ul {display:grid;gap:1rem;margin-block:1rem}
+.nourish-article-related li a {display:block}
+@media (max-width:767px) {
+  .fittrac-panel,.nourish-plate-grid,.nourish-article-layout {grid-template-columns:1fr}
+}

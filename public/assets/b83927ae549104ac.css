@@ -1,0 +1,71 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * greycliff-cf:
+ *   - http://typekit.com/eulas/00000000000000007735fa47
+ *   - http://typekit.com/eulas/00000000000000007735fa49
+ *   - http://typekit.com/eulas/00000000000000007735fa48
+ *   - http://typekit.com/eulas/00000000000000007735fa4c
+ *   - http://typekit.com/eulas/00000000000000007735fa4d
+ *   - http://typekit.com/eulas/00000000000000007735fa4e
+ *   - http://typekit.com/eulas/000000000000000077368791
+ *   - http://typekit.com/eulas/000000000000000077368798
+ *
+ * © 2009-2026 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2023-10-31 05:51:32 UTC"}*/
+
+
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/69a121b8d6a1fca9.woff2") format("woff2"),url("/assets/27ed04ce14b5720d.woff") format("woff"),url("/assets/16f45586da149cf1.woff") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/fd35dbcf354958b4.woff2") format("woff2"),url("/assets/d48956e86eb1e2a6.woff") format("woff"),url("/assets/fe80fc9af47a2672.woff") format("opentype");
+font-display:auto;font-style:normal;font-weight:800;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/95e5c9f54d4dd46d.woff2") format("woff2"),url("/assets/cabf7bb699e19141.woff") format("woff"),url("/assets/2412e4caa374ec73.woff") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/cbc0c8e6f63bd4b3.woff2") format("woff2"),url("/assets/18d5dc6c8820dc57.woff") format("woff"),url("/assets/85fa6bafe53be4aa.woff") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/060c46e4e4ec939e.woff2") format("woff2"),url("/assets/81f3642cb5e2595f.woff") format("woff"),url("/assets/555ca41b5e901c78.woff") format("opentype");
+font-display:auto;font-style:normal;font-weight:500;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/4311f8aca2882210.woff2") format("woff2"),url("/assets/d0507a595954c30a.woff") format("woff"),url("/assets/5fad4d311095860a.woff") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/b643d981af8592c3.woff2") format("woff2"),url("/assets/8da438bd2dfa455a.woff") format("woff"),url("/assets/fb2ec33ca644a310.woff") format("opentype");
+font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
+}
+
+@font-face {
+font-family:"greycliff-cf";
+src:url("/assets/13bf4c3f7ebd8809.woff2") format("woff2"),url("/assets/aa0b3bf5ccca27dc.woff") format("woff"),url("/assets/60233803ee84ee38.woff") format("opentype");
+font-display:auto;font-style:italic;font-weight:400;font-stretch:normal;
+}
+
+.tk-greycliff-cf { font-family: "greycliff-cf",sans-serif; }

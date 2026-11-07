@@ -1,0 +1,30 @@
+{
+  "name": "nourish-sahel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 3000",
+    "build": "vite build",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tanstack/react-start": "latest",
+    "@tanstack/react-router": "latest",
+    "nitro": "latest",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.0",
+    "vite": "latest",
+    "@vitejs/plugin-react": "latest",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0"
+  }
+}
