@@ -19,6 +19,6 @@ Open http://127.0.0.1:3000/.
 - `public/nourish` contains the optimised website images.
 - `public/precision.css` applies the brand palette and responsive layouts.
 
-Set the server environment variable `NOURISH_SITE_URL` to the public HTTPS origin at launch. The app uses it for canonical URLs and absolute social preview images. Preview pages carry a noindex directive when the public origin is unset.
+Set the server environment variable `NOURISH_SITE_URL` to the public HTTPS origin at launch. The app uses it for canonical URLs and absolute social preview images and the XML sitemap. The public robots.txt advertises the sitemap when the origin is configured. Preview pages carry a noindex directive when the public origin is unset.
 
 Contact and newsletter forms validate locally and show a preview confirmation. Connect live destinations and publish verified service terms and privacy copy before launch.
